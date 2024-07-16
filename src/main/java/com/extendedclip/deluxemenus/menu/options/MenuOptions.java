@@ -29,6 +29,8 @@ public class MenuOptions {
     private final ClickHandler openHandler;
     private final ClickHandler closeHandler;
 
+    private final String bedrockMenu;
+
     private MenuOptions(final @NotNull MenuOptionsBuilder builder) {
         this.name = builder.name;
         this.title = builder.title;
@@ -47,6 +49,8 @@ public class MenuOptions {
         this.openRequirements = builder.openRequirements;
         this.openHandler = builder.openHandler;
         this.closeHandler = builder.closeHandler;
+
+        this.bedrockMenu = builder.bedrockMenu;
     }
 
     public static @NotNull MenuOptionsBuilder builder(final @NotNull String name, final @NotNull String title) {
@@ -113,6 +117,10 @@ public class MenuOptions {
         return Optional.ofNullable(this.closeHandler);
     }
 
+    public @NotNull Optional<String> bedrockMenu() {
+        return Optional.ofNullable(this.bedrockMenu);
+    }
+
     public @NotNull MenuOptionsBuilder asBuilder() {
         return MenuOptions.builder(this.name, this.title)
                 .type(this.type)
@@ -127,7 +135,8 @@ public class MenuOptions {
                 .argumentsUsageMessage(this.argumentsUsageMessage)
                 .openRequirements(this.openRequirements)
                 .openHandler(this.openHandler)
-                .closeHandler(this.closeHandler);
+                .closeHandler(this.closeHandler)
+                .bedrockMenu(this.bedrockMenu);
     }
 
     public static class MenuOptionsBuilder {
@@ -149,6 +158,8 @@ public class MenuOptions {
         private RequirementList openRequirements;
         private ClickHandler openHandler;
         private ClickHandler closeHandler;
+
+        private String bedrockMenu;
 
         private MenuOptionsBuilder(final @NotNull String name, final @NotNull String title) {
             this.name = name;
@@ -227,6 +238,11 @@ public class MenuOptions {
 
         public MenuOptionsBuilder closeHandler(final @Nullable ClickHandler closeHandler) {
             this.closeHandler = closeHandler;
+            return this;
+        }
+
+        public MenuOptionsBuilder bedrockMenu(final @Nullable String bedrockMenu) {
+            this.bedrockMenu = bedrockMenu;
             return this;
         }
 

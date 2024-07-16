@@ -4,6 +4,7 @@ import com.extendedclip.deluxemenus.DeluxeMenus;
 import com.extendedclip.deluxemenus.dupe.MenuItemMarker;
 import com.extendedclip.deluxemenus.menu.options.MenuOptions;
 import com.extendedclip.deluxemenus.requirement.RequirementList;
+import com.extendedclip.deluxemenus.utils.BedrockUtils;
 import com.extendedclip.deluxemenus.utils.DebugLevel;
 import com.extendedclip.deluxemenus.utils.StringUtils;
 
@@ -329,6 +330,13 @@ public class Menu extends Command {
     public void openMenu(final @NotNull Player viewer, final @Nullable Map<String, String> args, final @Nullable Player placeholderPlayer) {
         if (items == null || items.isEmpty()) {
             return;
+        }
+        if(this.options.bedrockMenu().isPresent() && BedrockUtils.isBedrockCompatible() && BedrockUtils.isBedrockPlayer(viewer)) {
+            Optional<Menu> bmenu = Menu.getMenuByName(this.options.bedrockMenu().get());
+            if(bmenu.isPresent()) {
+                bmenu.get().openMenu(viewer, args, placeholderPlayer);
+                return;
+            }
         }
 
         final MenuHolder holder = new MenuHolder(viewer);

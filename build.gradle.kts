@@ -6,7 +6,7 @@ plugins {
 
 // Change to true when releasing
 val release = false
-val majorVersion = "1.14.1"
+val majorVersion = "1.14.2"
 val minorVersion = if (release) "Release" else "DEV-" + System.getenv("BUILD_NUMBER")
 
 group = "com.extendedclip"
@@ -19,6 +19,7 @@ repositories {
     maven("https://repo.glaremasters.me/repository/public/")
     maven("https://nexus.phoenixdevt.fr/repository/maven-public/")
     maven("https://jitpack.io")
+    maven("https://repo.opencollab.dev/main/")
 }
 
 dependencies {
@@ -40,6 +41,7 @@ dependencies {
     implementation(libs.adventure.minimessage)
 
     compileOnly("org.jetbrains:annotations:23.0.0")
+    compileOnly("org.geysermc.geyser:api:2.2.0-SNAPSHOT")
 }
 
 tasks {

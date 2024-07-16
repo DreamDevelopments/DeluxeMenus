@@ -669,6 +669,11 @@ public class DeluxeMenusConfig {
         final int updateInterval = c.getInt(pre + "update_interval", 10);
         builder.updateInterval(updateInterval > 0 ? updateInterval : 10);
 
+        if(c.contains(pre + "bedrock_menu")) {
+            builder.bedrockMenu(c.getString(pre + "bedrock_menu"));
+        }
+
+
         Map<Integer, TreeMap<Integer, MenuItem>> items = loadMenuItems(c, key, mainConfig);
 
         if (items == null || items.isEmpty()) {
