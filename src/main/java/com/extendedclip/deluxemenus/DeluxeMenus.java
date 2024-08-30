@@ -9,7 +9,6 @@ import com.extendedclip.deluxemenus.hooks.*;
 import com.extendedclip.deluxemenus.listener.PlayerListener;
 import com.extendedclip.deluxemenus.menu.options.HeadType;
 import com.extendedclip.deluxemenus.menu.Menu;
-import com.extendedclip.deluxemenus.metrics.Metrics;
 import com.extendedclip.deluxemenus.nbt.NbtProvider;
 import com.extendedclip.deluxemenus.persistentmeta.PersistentMetaHandler;
 import com.extendedclip.deluxemenus.placeholder.Expansion;
@@ -262,8 +261,6 @@ public class DeluxeMenus extends JavaPlugin {
   }
 
   private void startMetrics() {
-    Metrics metrics = new Metrics(this, 445);
-    metrics.addCustomChart(new Metrics.SingleLineChart("menus", Menu::getLoadedMenuSize));
   }
 
   public void connect(Player p, String server) {
